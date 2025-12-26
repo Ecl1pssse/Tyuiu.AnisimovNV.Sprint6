@@ -14,7 +14,7 @@ namespace Tyuiu.AnisimovNV.Sprint6.Task7.V12
         }
 
         private DataService ds = new DataService();
-        private int[,] currentMatrix;
+        private int[,] sourceMatrix;
         private int[,] resultMatrix;
 
         private void buttonOpen_NVA_Click(object sender, EventArgs e)
@@ -35,30 +35,30 @@ namespace Tyuiu.AnisimovNV.Sprint6.Task7.V12
                         return;
                     }
 
-                    // Загружаем матрицу
-                    currentMatrix = ds.GetMatrix(filePath);
+                    // Загружаем исходную матрицу (без изменений)
+                    sourceMatrix = ds.LoadMatrixWithoutModify(filePath);
 
                     // Отображаем исходную матрицу
-                    DisplayMatrix(currentMatrix, dataGridViewIn_NVA);
+                    DisplayMatrix(sourceMatrix, dataGridViewIn_NVA);
 
-                    // Преобразуем матрицу
-                    resultMatrix = ds.GetMatrix(currentMatrix);
+                    // Получаем преобразованную матрицу
+                    resultMatrix = ds.GetMatrix(sourceMatrix);
 
                     // Отображаем результат
                     DisplayMatrix(resultMatrix, dataGridViewOut_NVA);
 
                     // Подсвечиваем 9-й столбец
-                    HighlightModifiedCells();
+                    HighlightNinthColumn();
 
                     buttonSave_NVA.Enabled = true;
 
-                    MessageBox.Show("Данные успешно загружены!", "Успех",
+                    MessageBox.Show("Данные успешно загружены и преобразованы!", "Успех",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка при загрузке файла:\n{ex.Message}", "Ошибка",
+                MessageBox.Show($"Ошибка:\n{ex.Message}", "Ошибка",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 buttonSave_NVA.Enabled = false;
             }
@@ -82,7 +82,7 @@ namespace Tyuiu.AnisimovNV.Sprint6.Task7.V12
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка при сохранении файла:\n{ex.Message}", "Ошибка",
+                MessageBox.Show($"Ошибка при сохранении:\n{ex.Message}", "Ошибка",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -109,7 +109,7 @@ namespace Tyuiu.AnisimovNV.Sprint6.Task7.V12
                 dgv.Columns.Add($"col{j}", $"Столбец {j + 1}");
                 dgv.Columns[j].Width = 50;
                 dgv.Columns[j].DefaultCellStyle.Alignment =
-                    System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+                    DataGridViewContentAlignment.MiddleCenter;
             }
 
             // Заполняем данными
@@ -123,23 +123,14 @@ namespace Tyuiu.AnisimovNV.Sprint6.Task7.V12
             }
         }
 
-        private void HighlightModifiedCells()
+        private void HighlightNinthColumn()
         {
-            if (currentMatrix == null || resultMatrix == null) return;
-
-            int rows = resultMatrix.GetLength(0);
-            int columns = resultMatrix.GetLength(1);
-
-            // Подсвечиваем измененные ячейки в 9-м столбце
-            if (columns > 8)
+            if (dataGridViewOut_NVA.Columns.Count > 8)
             {
-                for (int i = 0; i < rows; i++)
+                for (int i = 0; i < dataGridViewOut_NVA.Rows.Count; i++)
                 {
-                    if (currentMatrix[i, 8] != resultMatrix[i, 8])
-                    {
-                        dataGridViewOut_NVA.Rows[i].Cells[8].Style.BackColor =
-                            System.Drawing.Color.Yellow;
-                    }
+                    dataGridViewOut_NVA.Rows[i].Cells[8].Style.BackColor =
+                        System.Drawing.Color.Yellow;
                 }
             }
         }

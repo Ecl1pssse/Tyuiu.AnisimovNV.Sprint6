@@ -6,12 +6,12 @@ namespace Tyuiu.AnisimovNV.Sprint6.Task7.V12.Lib
 {
     public class DataService : ISprint6Task7V12
     {
-        public int[,] GetMatrix(string path)
+        // Вспомогательный метод для загрузки матрицы из файла (без преобразования)
+        private int[,] LoadMatrixFromFile(string path)
         {
-            // Читаем все строки файла
             string[] allLines = File.ReadAllLines(path);
 
-            // Фильтруем пустые строки и строки только с пробелами
+            // Фильтруем пустые строки
             var lines = new System.Collections.Generic.List<string>();
             foreach (string line in allLines)
             {
@@ -26,7 +26,6 @@ namespace Tyuiu.AnisimovNV.Sprint6.Task7.V12.Lib
                 throw new Exception("Файл пуст или содержит только пустые строки");
             }
 
-            // Определяем количество столбцов по первой непустой строке
             int rows = lines.Count;
             int columns = lines[0].Split(';').Length;
 
@@ -36,15 +35,13 @@ namespace Tyuiu.AnisimovNV.Sprint6.Task7.V12.Lib
             {
                 string[] values = lines[i].Split(';');
 
-                // Проверяем, что количество столбцов совпадает
                 if (values.Length != columns)
                 {
-                    throw new Exception($"Несоответствие количества столбцов в строке {i + 1}. Ожидалось: {columns}, получено: {values.Length}");
+                    throw new Exception($"Несоответствие количества столбцов в строке {i + 1}");
                 }
 
                 for (int j = 0; j < columns; j++)
                 {
-                    // Убираем пробелы и пытаемся преобразовать в число
                     string trimmedValue = values[j].Trim();
                     if (string.IsNullOrEmpty(trimmedValue))
                     {
@@ -53,7 +50,7 @@ namespace Tyuiu.AnisimovNV.Sprint6.Task7.V12.Lib
 
                     if (!int.TryParse(trimmedValue, out int parsedValue))
                     {
-                        throw new Exception($"Неверный формат числа в строке {i + 1}, столбец {j + 1}: '{values[j]}'");
+                        throw new Exception($"Неверный формат числа в строке {i + 1}, столбец {j + 1}");
                     }
 
                     matrix[i, j] = parsedValue;
@@ -61,6 +58,16 @@ namespace Tyuiu.AnisimovNV.Sprint6.Task7.V12.Lib
             }
 
             return matrix;
+        }
+
+        // Реализация интерфейса ISprint6Task7V12
+        public int[,] GetMatrix(string path)
+        {
+            // Загружаем матрицу из файла
+            int[,] matrix = LoadMatrixFromFile(path);
+
+            // НЕМЕДЛЕННО применяем преобразование и возвращаем результат
+            return GetMatrix(matrix);
         }
 
         public int[,] GetMatrix(int[,] matrix)
@@ -83,11 +90,11 @@ namespace Tyuiu.AnisimovNV.Sprint6.Task7.V12.Lib
             // Модифицируем 9-й столбец (индекс 8)
             int targetColumn = 8;
 
-            // Проверяем, что столбец существует
             if (columns > targetColumn)
             {
                 for (int i = 0; i < rows; i++)
                 {
+                    // ВАЖНО: заменить на 0 ВСЕ значения, не равные 10
                     if (resultMatrix[i, targetColumn] != 10)
                     {
                         resultMatrix[i, targetColumn] = 0;
@@ -96,6 +103,12 @@ namespace Tyuiu.AnisimovNV.Sprint6.Task7.V12.Lib
             }
 
             return resultMatrix;
+        }
+
+        // Дополнительный публичный метод для Windows Forms (не часть интерфейса)
+        public int[,] LoadMatrixWithoutModify(string path)
+        {
+            return LoadMatrixFromFile(path);
         }
     }
 }
