@@ -19,4 +19,9 @@
     <Project Path="Tyuiu.AnisimovNV.Sprint6.Task3.V7.Test/Tyuiu.AnisimovNV.Sprint6.Task3.V7.Test.csproj" />
     <Project Path="Tyuiu.AnisimovNV.Sprint6.Task3.V7/Tyuiu.AnisimovNV.Sprint6.Task3.V7.csproj" />
   </Folder>
+  <Folder Name="/Task 4/">
+    <Project Path="Tyuiu.AnisimovNV.Sprint6.Task4.V5.Lib/Tyuiu.AnisimovNV.Sprint6.Task4.V5.Lib.csproj" />
+    <Project Path="Tyuiu.AnisimovNV.Sprint6.Task4.V5.Test/Tyuiu.AnisimovNV.Sprint6.Task4.V5.Test.csproj" />
+    <Project Path="Tyuiu.AnisimovNV.Sprint6.Task4.V5/Tyuiu.AnisimovNV.Sprint6.Task4.V5.csproj" />
+  </Folder>
 </Solution>
