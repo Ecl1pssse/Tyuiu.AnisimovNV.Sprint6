@@ -1,37 +1,24 @@
 ﻿using System;
 using System.IO;
 
-// Внимание! Убедитесь, что установлен пакет Tyuiu.Courses.Programming.Interfaces
-// Если его нет, используйте этот код:
-
 namespace Tyuiu.AnisimovNV.Sprint7.Task7.V12.Lib
 {
-    public class DataService // Уберите : ISprint7Task7V12 если нет интерфейса
+    public class DataService
     {
         public int[,] GetMatrix(string path)
         {
-            string fileData = File.ReadAllText(path);
-            fileData = fileData.Replace('\n', '\r');
-            string[] lines = fileData.Split(new char[] { '\r' }, StringSplitOptions.RemoveEmptyEntries);
-
+            string[] lines = File.ReadAllLines(path);
             int rows = lines.Length;
-            int columns = lines[0].Split(';').Length;
+            int cols = lines[0].Split(';').Length;
 
-            int[,] matrix = new int[rows, columns];
+            int[,] matrix = new int[rows, cols];
 
             for (int i = 0; i < rows; i++)
             {
                 string[] values = lines[i].Split(';');
-                for (int j = 0; j < columns; j++)
+                for (int j = 0; j < cols; j++)
                 {
-                    if (int.TryParse(values[j], out int value))
-                    {
-                        matrix[i, j] = value;
-                    }
-                    else
-                    {
-                        matrix[i, j] = 0;
-                    }
+                    matrix[i, j] = int.Parse(values[j]);
                 }
             }
 
@@ -41,45 +28,46 @@ namespace Tyuiu.AnisimovNV.Sprint7.Task7.V12.Lib
         public int[,] ModifyMatrix(int[,] matrix)
         {
             int rows = matrix.GetLength(0);
-            int columns = matrix.GetLength(1);
-            int[,] resultMatrix = (int[,])matrix.Clone();
+            int cols = matrix.GetLength(1);
 
-            int targetColumn = 8; // 9-й столбец
+            int[,] result = new int[rows, cols];
 
-            if (columns > targetColumn)
+            for (int i = 0; i < rows; i++)
             {
-                for (int i = 0; i < rows; i++)
+                for (int j = 0; j < cols; j++)
                 {
-                    if (resultMatrix[i, targetColumn] != 10)
+                    if (j == 8 && matrix[i, j] != 10)
                     {
-                        resultMatrix[i, targetColumn] = 0;
+                        result[i, j] = 0;
+                    }
+                    else
+                    {
+                        result[i, j] = matrix[i, j];
                     }
                 }
             }
 
-            return resultMatrix;
+            return result;
         }
 
         public void SaveMatrixToFile(int[,] matrix, string path)
         {
             int rows = matrix.GetLength(0);
-            int columns = matrix.GetLength(1);
+            int cols = matrix.GetLength(1);
 
-            using (StreamWriter writer = new StreamWriter(path))
+            string[] lines = new string[rows];
+
+            for (int i = 0; i < rows; i++)
             {
-                for (int i = 0; i < rows; i++)
+                string[] values = new string[cols];
+                for (int j = 0; j < cols; j++)
                 {
-                    for (int j = 0; j < columns; j++)
-                    {
-                        writer.Write(matrix[i, j]);
-                        if (j < columns - 1)
-                        {
-                            writer.Write(";");
-                        }
-                    }
-                    writer.WriteLine();
+                    values[j] = matrix[i, j].ToString();
                 }
+                lines[i] = string.Join(";", values);
             }
+
+            File.WriteAllLines(path, lines);
         }
     }
 }
