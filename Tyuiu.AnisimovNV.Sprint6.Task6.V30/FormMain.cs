@@ -11,34 +11,35 @@ namespace Tyuiu.AnisimovNV.Sprint6.Task6.V30
             InitializeComponent();
         }
 
-        private void buttonOpen_NVA_Click(object sender, EventArgs e)
+        private void buttonOpenFile_NVA_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "txt files (*.txt)|*.txt";
             openFileDialog1.FileName = "InPutFileTask6V30.txt";
+            openFileDialog1.Filter = "Текстовые файлы (*.txt)|*.txt";
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
+                string filePath = openFileDialog1.FileName;
+
                 try
                 {
-                    string path = openFileDialog1.FileName;
+                    // Показать содержимое файла
+                    textBoxInput_NVA.Text = System.IO.File.ReadAllText(filePath);
 
-                    // Читаем файл
-                    textBoxIn_NVA.Text = System.IO.File.ReadAllText(path);
-
-                    // Обрабатываем
+                    // Обработать файл
                     DataService ds = new DataService();
-                    textBoxOut_NVA.Text = ds.CollectTextFromFile(path);
+                    string result = ds.CollectTextFromFile(filePath);
+                    textBoxOutput_NVA.Text = result;
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show("Ошибка: " + ex.Message);
+                    MessageBox.Show("Ошибка при чтении файла");
                 }
             }
         }
 
         private void buttonInfo_NVA_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Таск 6 выполнил студент группы ИСТИБ-25-1 Анисимов Н.В.");
+            MessageBox.Show("Задание 6 выполнил студент группы ИСТИБ-25-1 Анисимов Н.В.");
         }
     }
 }

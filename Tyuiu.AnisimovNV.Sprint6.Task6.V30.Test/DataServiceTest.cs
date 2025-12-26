@@ -7,15 +7,21 @@ namespace Tyuiu.AnisimovNV.Sprint6.Task6.V30.Test
     public class DataServiceTest
     {
         [Fact]
-        public void TestMethod1()
+        public void TestCollectTextFromFile()
         {
-            string testFile = "test.txt";
-            File.WriteAllText(testFile, "один два три четыре\nпять шесть семь восемь");
-
             DataService ds = new DataService();
+
+            string testFile = "test.txt";
+            File.WriteAllLines(testFile, new string[]
+            {
+                "один два три четыре пять",
+                "раз два три четыре",
+                "слово1 слово2 слово3 слово4"
+            });
+
             string result = ds.CollectTextFromFile(testFile);
 
-            Assert.Equal("четыре\r\nвосемь", result);
+            Assert.Equal("четыре\r\nтри\r\nслово4", result);
 
             File.Delete(testFile);
         }

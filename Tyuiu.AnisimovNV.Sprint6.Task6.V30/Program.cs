@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Tyuiu.AnisimovNV.Sprint6.Task6.V30
 {
-    internal static class Program
+    static class Program
     {
         [STAThread]
         static void Main()
