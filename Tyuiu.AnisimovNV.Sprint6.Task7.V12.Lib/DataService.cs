@@ -1,13 +1,14 @@
 ﻿using System;
 using System.IO;
+using tyuiu.cources.programming.interfaces.Sprint6;
 
 namespace Tyuiu.AnisimovNV.Sprint6.Task7.V12.Lib
 {
-    public class DataService
+    public class DataService : ISprint6Task7V12
     {
-        public int[,] LoadFromFileData(string filePath)
+        public int[,] GetMatrix(string path)
         {
-            string[] lines = File.ReadAllLines(filePath);
+            string[] lines = File.ReadAllLines(path);
             int rows = lines.Length;
             int columns = lines[0].Split(';').Length;
 
@@ -18,7 +19,7 @@ namespace Tyuiu.AnisimovNV.Sprint6.Task7.V12.Lib
                 string[] values = lines[i].Split(';');
                 for (int j = 0; j < columns; j++)
                 {
-                    matrix[i, j] = Convert.ToInt32(values[j]);
+                    matrix[i, j] = int.Parse(values[j]);
                 }
             }
 
@@ -32,7 +33,6 @@ namespace Tyuiu.AnisimovNV.Sprint6.Task7.V12.Lib
 
             int[,] resultMatrix = new int[rows, columns];
 
-            // Копируем исходную матрицу
             for (int i = 0; i < rows; i++)
             {
                 for (int j = 0; j < columns; j++)
@@ -41,7 +41,6 @@ namespace Tyuiu.AnisimovNV.Sprint6.Task7.V12.Lib
                 }
             }
 
-            // Модифицируем 9-й столбец (индекс 8)
             int targetColumn = 8;
 
             if (columns > targetColumn)

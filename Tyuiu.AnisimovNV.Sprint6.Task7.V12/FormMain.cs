@@ -10,6 +10,7 @@ namespace Tyuiu.AnisimovNV.Sprint6.Task7.V12
         public FormMain()
         {
             InitializeComponent();
+            buttonSave_NVA.Enabled = false;
         }
 
         DataService ds = new DataService();
@@ -23,17 +24,14 @@ namespace Tyuiu.AnisimovNV.Sprint6.Task7.V12
 
             if (File.Exists(openFilePath))
             {
-                // Читаем матрицу
-                matrix = ds.LoadFromFileData(openFilePath);
+                matrix = ds.GetMatrix(openFilePath);
 
-                // Отображаем в dataGridViewIn
                 int rows = matrix.GetLength(0);
                 int columns = matrix.GetLength(1);
 
                 dataGridViewIn_NVA.ColumnCount = columns;
                 dataGridViewIn_NVA.RowCount = rows;
 
-                // Заполняем исходную матрицу
                 for (int i = 0; i < rows; i++)
                 {
                     for (int j = 0; j < columns; j++)
@@ -42,10 +40,8 @@ namespace Tyuiu.AnisimovNV.Sprint6.Task7.V12
                     }
                 }
 
-                // Выполняем преобразование
                 int[,] resultMatrix = ds.GetMatrix(matrix);
 
-                // Отображаем результат в dataGridViewOut
                 dataGridViewOut_NVA.ColumnCount = columns;
                 dataGridViewOut_NVA.RowCount = rows;
 
@@ -54,20 +50,18 @@ namespace Tyuiu.AnisimovNV.Sprint6.Task7.V12
                     for (int j = 0; j < columns; j++)
                     {
                         dataGridViewOut_NVA.Rows[i].Cells[j].Value = resultMatrix[i, j];
+                    }
+                }
 
-                        // Подсвечиваем измененные ячейки
-                        if (j == 8 && matrix[i, j] != 10)
-                        {
-                            dataGridViewOut_NVA.Rows[i].Cells[j].Style.BackColor = System.Drawing.Color.Yellow;
-                        }
+                if (columns > 8)
+                {
+                    for (int i = 0; i < rows; i++)
+                    {
+                        dataGridViewOut_NVA.Rows[i].Cells[8].Style.BackColor = System.Drawing.Color.Yellow;
                     }
                 }
 
                 buttonSave_NVA.Enabled = true;
-            }
-            else
-            {
-                MessageBox.Show("Файл не выбран", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -107,8 +101,7 @@ namespace Tyuiu.AnisimovNV.Sprint6.Task7.V12
 
         private void buttonHelp_NVA_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Таск 7 выполнил студент группы ИСТИБ-25-1 Анисимов Н.В.", "Сообщение",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Таск 7 выполнил студент группы ИСТИБ-25-1 Анисимов Н.В.", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
