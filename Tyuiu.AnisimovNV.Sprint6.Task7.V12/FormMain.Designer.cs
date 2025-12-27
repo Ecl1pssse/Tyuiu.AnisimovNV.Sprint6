@@ -26,112 +26,155 @@
 
         private void InitializeComponent()
         {
-            this.groupBoxTask_NVA = new System.Windows.Forms.GroupBox();
-            this.textBoxTask_NVA = new System.Windows.Forms.TextBox();
-            this.groupBoxInput_NVA = new System.Windows.Forms.GroupBox();
-            this.dataGridViewIn_NVA = new System.Windows.Forms.DataGridView();
-            this.buttonOpen_NVA = new System.Windows.Forms.Button();
-            this.groupBoxOutput_NVA = new System.Windows.Forms.GroupBox();
-            this.dataGridViewOut_NVA = new System.Windows.Forms.DataGridView();
-            this.buttonSave_NVA = new System.Windows.Forms.Button();
-            this.openFileDialogTask_NVA = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialogMatrix_NVA = new System.Windows.Forms.SaveFileDialog();
-            this.buttonHelp_NVA = new System.Windows.Forms.Button();
-            this.groupBoxTask_NVA.SuspendLayout();
-            this.groupBoxInput_NVA.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewIn_NVA)).BeginInit();
-            this.groupBoxOutput_NVA.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOut_NVA)).BeginInit();
-            this.SuspendLayout();
-
-            this.groupBoxTask_NVA.Controls.Add(this.textBoxTask_NVA);
-            this.groupBoxTask_NVA.Location = new System.Drawing.Point(12, 12);
-            this.groupBoxTask_NVA.Name = "groupBoxTask_NVA";
-            this.groupBoxTask_NVA.Size = new System.Drawing.Size(760, 60);
-            this.groupBoxTask_NVA.TabIndex = 0;
-            this.groupBoxTask_NVA.TabStop = false;
-            this.groupBoxTask_NVA.Text = "Условие";
-
-            this.textBoxTask_NVA.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxTask_NVA.Location = new System.Drawing.Point(10, 20);
-            this.textBoxTask_NVA.Multiline = true;
-            this.textBoxTask_NVA.Name = "textBoxTask_NVA";
-            this.textBoxTask_NVA.ReadOnly = true;
-            this.textBoxTask_NVA.Size = new System.Drawing.Size(740, 30);
-            this.textBoxTask_NVA.Text = "В файле InPutFileTask7V12.csv хранится матрица. Загрузить матрицу и в 9-м столбце заменить значения, не равные 10, на 0. Сохранить результат.";
-
-            this.groupBoxInput_NVA.Controls.Add(this.dataGridViewIn_NVA);
-            this.groupBoxInput_NVA.Controls.Add(this.buttonOpen_NVA);
-            this.groupBoxInput_NVA.Location = new System.Drawing.Point(12, 80);
-            this.groupBoxInput_NVA.Name = "groupBoxInput_NVA";
-            this.groupBoxInput_NVA.Size = new System.Drawing.Size(370, 320);
-            this.groupBoxInput_NVA.TabIndex = 1;
-            this.groupBoxInput_NVA.TabStop = false;
-            this.groupBoxInput_NVA.Text = "Исходная матрица";
-
-            this.dataGridViewIn_NVA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewIn_NVA.Location = new System.Drawing.Point(10, 60);
-            this.dataGridViewIn_NVA.Name = "dataGridViewIn_NVA";
-            this.dataGridViewIn_NVA.Size = new System.Drawing.Size(350, 250);
-            this.dataGridViewIn_NVA.TabIndex = 1;
-
-            this.buttonOpen_NVA.Location = new System.Drawing.Point(10, 20);
-            this.buttonOpen_NVA.Name = "buttonOpen_NVA";
-            this.buttonOpen_NVA.Size = new System.Drawing.Size(150, 30);
-            this.buttonOpen_NVA.TabIndex = 0;
-            this.buttonOpen_NVA.Text = "Открыть файл";
-            this.buttonOpen_NVA.UseVisualStyleBackColor = true;
-            this.buttonOpen_NVA.Click += new System.EventHandler(this.buttonOpen_NVA_Click);
-
-            this.groupBoxOutput_NVA.Controls.Add(this.dataGridViewOut_NVA);
-            this.groupBoxOutput_NVA.Controls.Add(this.buttonSave_NVA);
-            this.groupBoxOutput_NVA.Location = new System.Drawing.Point(390, 80);
-            this.groupBoxOutput_NVA.Name = "groupBoxOutput_NVA";
-            this.groupBoxOutput_NVA.Size = new System.Drawing.Size(370, 320);
-            this.groupBoxOutput_NVA.TabIndex = 2;
-            this.groupBoxOutput_NVA.TabStop = false;
-            this.groupBoxOutput_NVA.Text = "Результат";
-
-            this.dataGridViewOut_NVA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewOut_NVA.Location = new System.Drawing.Point(10, 60);
-            this.dataGridViewOut_NVA.Name = "dataGridViewOut_NVA";
-            this.dataGridViewOut_NVA.Size = new System.Drawing.Size(350, 250);
-            this.dataGridViewOut_NVA.TabIndex = 2;
-
-            this.buttonSave_NVA.Enabled = false;
-            this.buttonSave_NVA.Location = new System.Drawing.Point(10, 20);
-            this.buttonSave_NVA.Name = "buttonSave_NVA";
-            this.buttonSave_NVA.Size = new System.Drawing.Size(150, 30);
-            this.buttonSave_NVA.TabIndex = 1;
-            this.buttonSave_NVA.Text = "Сохранить результат";
-            this.buttonSave_NVA.UseVisualStyleBackColor = true;
-            this.buttonSave_NVA.Click += new System.EventHandler(this.buttonSave_NVA_Click);
-
-            this.buttonHelp_NVA.Location = new System.Drawing.Point(720, 12);
-            this.buttonHelp_NVA.Name = "buttonHelp_NVA";
-            this.buttonHelp_NVA.Size = new System.Drawing.Size(52, 23);
-            this.buttonHelp_NVA.TabIndex = 3;
-            this.buttonHelp_NVA.Text = "?";
-            this.buttonHelp_NVA.UseVisualStyleBackColor = true;
-            this.buttonHelp_NVA.Click += new System.EventHandler(this.buttonHelp_NVA_Click);
-
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 411);
-            this.Controls.Add(this.buttonHelp_NVA);
-            this.Controls.Add(this.groupBoxOutput_NVA);
-            this.Controls.Add(this.groupBoxInput_NVA);
-            this.Controls.Add(this.groupBoxTask_NVA);
-            this.MaximizeBox = false;
-            this.Name = "FormMain";
-            this.Text = "Спринт 6 | Таск 7 | Вариант 12 | Анисимов Н.В.";
-            this.groupBoxTask_NVA.ResumeLayout(false);
-            this.groupBoxTask_NVA.PerformLayout();
-            this.groupBoxInput_NVA.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewIn_NVA)).EndInit();
-            this.groupBoxOutput_NVA.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOut_NVA)).EndInit();
-            this.ResumeLayout(false);
+            groupBoxTask_NVA = new GroupBox();
+            textBoxTask_NVA = new TextBox();
+            groupBoxInput_NVA = new GroupBox();
+            dataGridViewIn_NVA = new DataGridView();
+            buttonOpen_NVA = new Button();
+            groupBoxOutput_NVA = new GroupBox();
+            dataGridViewOut_NVA = new DataGridView();
+            buttonSave_NVA = new Button();
+            openFileDialogTask_NVA = new OpenFileDialog();
+            saveFileDialogMatrix_NVA = new SaveFileDialog();
+            buttonHelp_NVA = new Button();
+            groupBoxTask_NVA.SuspendLayout();
+            groupBoxInput_NVA.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewIn_NVA).BeginInit();
+            groupBoxOutput_NVA.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewOut_NVA).BeginInit();
+            SuspendLayout();
+            // 
+            // groupBoxTask_NVA
+            // 
+            groupBoxTask_NVA.Controls.Add(textBoxTask_NVA);
+            groupBoxTask_NVA.Location = new Point(14, 14);
+            groupBoxTask_NVA.Margin = new Padding(4, 3, 4, 3);
+            groupBoxTask_NVA.Name = "groupBoxTask_NVA";
+            groupBoxTask_NVA.Padding = new Padding(4, 3, 4, 3);
+            groupBoxTask_NVA.Size = new Size(887, 69);
+            groupBoxTask_NVA.TabIndex = 0;
+            groupBoxTask_NVA.TabStop = false;
+            groupBoxTask_NVA.Text = "Условие";
+            // 
+            // textBoxTask_NVA
+            // 
+            textBoxTask_NVA.BorderStyle = BorderStyle.None;
+            textBoxTask_NVA.Location = new Point(12, 23);
+            textBoxTask_NVA.Margin = new Padding(4, 3, 4, 3);
+            textBoxTask_NVA.Multiline = true;
+            textBoxTask_NVA.Name = "textBoxTask_NVA";
+            textBoxTask_NVA.ReadOnly = true;
+            textBoxTask_NVA.Size = new Size(863, 35);
+            textBoxTask_NVA.TabIndex = 0;
+            textBoxTask_NVA.Text = "В файле InPutFileTask7V12.csv хранится матрица. Загрузить матрицу и в 9-м столбце заменить значения, не равные 10, на 0. Сохранить результат.";
+            textBoxTask_NVA.TextChanged += textBoxTask_NVA_TextChanged;
+            // 
+            // groupBoxInput_NVA
+            // 
+            groupBoxInput_NVA.Controls.Add(dataGridViewIn_NVA);
+            groupBoxInput_NVA.Controls.Add(buttonOpen_NVA);
+            groupBoxInput_NVA.Location = new Point(14, 92);
+            groupBoxInput_NVA.Margin = new Padding(4, 3, 4, 3);
+            groupBoxInput_NVA.Name = "groupBoxInput_NVA";
+            groupBoxInput_NVA.Padding = new Padding(4, 3, 4, 3);
+            groupBoxInput_NVA.Size = new Size(432, 369);
+            groupBoxInput_NVA.TabIndex = 1;
+            groupBoxInput_NVA.TabStop = false;
+            groupBoxInput_NVA.Text = "Исходная матрица";
+            // 
+            // dataGridViewIn_NVA
+            // 
+            dataGridViewIn_NVA.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewIn_NVA.Location = new Point(12, 69);
+            dataGridViewIn_NVA.Margin = new Padding(4, 3, 4, 3);
+            dataGridViewIn_NVA.Name = "dataGridViewIn_NVA";
+            dataGridViewIn_NVA.Size = new Size(408, 288);
+            dataGridViewIn_NVA.TabIndex = 1;
+            // 
+            // buttonOpen_NVA
+            // 
+            buttonOpen_NVA.Location = new Point(12, 23);
+            buttonOpen_NVA.Margin = new Padding(4, 3, 4, 3);
+            buttonOpen_NVA.Name = "buttonOpen_NVA";
+            buttonOpen_NVA.Size = new Size(175, 35);
+            buttonOpen_NVA.TabIndex = 0;
+            buttonOpen_NVA.Text = "Открыть файл";
+            buttonOpen_NVA.UseVisualStyleBackColor = true;
+            buttonOpen_NVA.Click += buttonOpen_NVA_Click;
+            // 
+            // groupBoxOutput_NVA
+            // 
+            groupBoxOutput_NVA.Controls.Add(dataGridViewOut_NVA);
+            groupBoxOutput_NVA.Controls.Add(buttonSave_NVA);
+            groupBoxOutput_NVA.Location = new Point(455, 92);
+            groupBoxOutput_NVA.Margin = new Padding(4, 3, 4, 3);
+            groupBoxOutput_NVA.Name = "groupBoxOutput_NVA";
+            groupBoxOutput_NVA.Padding = new Padding(4, 3, 4, 3);
+            groupBoxOutput_NVA.Size = new Size(432, 369);
+            groupBoxOutput_NVA.TabIndex = 2;
+            groupBoxOutput_NVA.TabStop = false;
+            groupBoxOutput_NVA.Text = "Результат";
+            // 
+            // dataGridViewOut_NVA
+            // 
+            dataGridViewOut_NVA.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewOut_NVA.Location = new Point(12, 69);
+            dataGridViewOut_NVA.Margin = new Padding(4, 3, 4, 3);
+            dataGridViewOut_NVA.Name = "dataGridViewOut_NVA";
+            dataGridViewOut_NVA.Size = new Size(408, 288);
+            dataGridViewOut_NVA.TabIndex = 2;
+            // 
+            // buttonSave_NVA
+            // 
+            buttonSave_NVA.Enabled = false;
+            buttonSave_NVA.Location = new Point(12, 23);
+            buttonSave_NVA.Margin = new Padding(4, 3, 4, 3);
+            buttonSave_NVA.Name = "buttonSave_NVA";
+            buttonSave_NVA.Size = new Size(175, 35);
+            buttonSave_NVA.TabIndex = 1;
+            buttonSave_NVA.Text = "Сохранить результат";
+            buttonSave_NVA.UseVisualStyleBackColor = true;
+            buttonSave_NVA.Click += buttonSave_NVA_Click;
+            // 
+            // openFileDialogTask_NVA
+            // 
+            openFileDialogTask_NVA.FileOk += openFileDialogTask_NVA_FileOk;
+            // 
+            // saveFileDialogMatrix_NVA
+            // 
+            saveFileDialogMatrix_NVA.FileOk += saveFileDialogMatrix_NVA_FileOk;
+            // 
+            // buttonHelp_NVA
+            // 
+            buttonHelp_NVA.Location = new Point(840, 14);
+            buttonHelp_NVA.Margin = new Padding(4, 3, 4, 3);
+            buttonHelp_NVA.Name = "buttonHelp_NVA";
+            buttonHelp_NVA.Size = new Size(61, 27);
+            buttonHelp_NVA.TabIndex = 3;
+            buttonHelp_NVA.Text = "?";
+            buttonHelp_NVA.UseVisualStyleBackColor = true;
+            buttonHelp_NVA.Click += buttonHelp_NVA_Click;
+            // 
+            // FormMain
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(915, 474);
+            Controls.Add(buttonHelp_NVA);
+            Controls.Add(groupBoxOutput_NVA);
+            Controls.Add(groupBoxInput_NVA);
+            Controls.Add(groupBoxTask_NVA);
+            Margin = new Padding(4, 3, 4, 3);
+            MaximizeBox = false;
+            Name = "FormMain";
+            Text = "Спринт 6 | Таск 7 | Вариант 12 | Анисимов Н.В.";
+            groupBoxTask_NVA.ResumeLayout(false);
+            groupBoxTask_NVA.PerformLayout();
+            groupBoxInput_NVA.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewIn_NVA).EndInit();
+            groupBoxOutput_NVA.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewOut_NVA).EndInit();
+            ResumeLayout(false);
         }
     }
 }

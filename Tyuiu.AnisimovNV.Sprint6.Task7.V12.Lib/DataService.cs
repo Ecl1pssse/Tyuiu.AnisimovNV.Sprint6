@@ -6,7 +6,6 @@ namespace Tyuiu.AnisimovNV.Sprint6.Task7.V12.Lib
 {
     public class DataService : ISprint6Task7V12
     {
-        // Вспомогательный метод для загрузки матрицы из файла (без преобразования)
         private int[,] LoadMatrixFromFile(string path)
         {
             string[] allLines = File.ReadAllLines(path);

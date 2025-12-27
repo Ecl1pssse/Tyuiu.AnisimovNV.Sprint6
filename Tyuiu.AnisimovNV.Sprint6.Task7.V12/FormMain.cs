@@ -153,5 +153,20 @@ namespace Tyuiu.AnisimovNV.Sprint6.Task7.V12
                 }
             }
         }
+
+        private void openFileDialogTask_NVA_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+        }
+
+        private void saveFileDialogMatrix_NVA_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+        }
+
+        private void textBoxTask_NVA_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
