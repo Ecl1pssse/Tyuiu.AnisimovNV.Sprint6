@@ -104,7 +104,7 @@ namespace Tyuiu.AnisimovNV.Sprint6.Task7.V12.Lib
             return resultMatrix;
         }
 
-        // Дополнительный публичный метод для Windows Forms (не часть интерфейса)
+        
         public int[,] LoadMatrixWithoutModify(string path)
         {
             return LoadMatrixFromFile(path);
